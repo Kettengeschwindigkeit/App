@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 
 export const Page = () => {
 
@@ -26,10 +28,10 @@ export const Page = () => {
 
 export const Navbar = () => {
 
-    let open =  false
+    const [open, setOpen] = useState(false)
+
     const handleMenuClick = () => {
-        open = !open
-        console.log(open)
+        setOpen((prevState) => !prevState)
     }
 
     return (
