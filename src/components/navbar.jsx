@@ -1,4 +1,5 @@
 import { useState } from "react"
+import NavLink from "./navLink"
 
 const Navbar = () => {
 
@@ -19,7 +20,7 @@ const Navbar = () => {
             {open && (
             <ul className="list-group">
                 {menuItems.map((item) => (
-                    <li className="list-group-item" key={item} onClick={() => handleItemClick(item)}>{item}</li>
+                    <NavLink key={item} />
                 ))}
             </ul>
             )}

@@ -1,4 +1,5 @@
-import { useState } from "react"
+import React from "react"
+import Navbar from "./navbar"
 
 
 const Page = () => {
@@ -11,6 +12,7 @@ const Page = () => {
             <header>
                 <div>{sitename}</div>
                 <img src={logoUrl} alt="logo" />
+                <Navbar />
             </header>
             <footer>Footer</footer>
         </>
