@@ -1,6 +1,6 @@
 
 export const Page = () => {
-    
+
     const logoUrl = ""
     const sitename = "example.com"
 
@@ -17,9 +17,27 @@ export const Page = () => {
                 </div>
                 {logoUrl && <img src={logoUrl} alt="logo" />}
             </header>
+            <Navbar />
             <footer>Footer</footer>
         </>
     )
 }
 
-export default Page
+
+export const Navbar = () => {
+
+    let open =  false
+    const handleMenuClick = () => {
+        open = !open
+        console.log(open)
+    }
+
+    return (
+        <div>
+            <button className="btn btn-sm btn-primary" onClick={handleMenuClick}>
+                Menu
+            </button>
+            { open && <div>Menu content</div>}
+        </div>
+    )
+}
