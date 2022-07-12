@@ -1,8 +1,12 @@
 import './App.css';
-import { Page } from './Page';
+import Page from './components/page';
 
 function App() {
-  return <Page />
+  return (
+    <div className='App'>
+      <Page />
+    </div>
+  )
 }
 
 export default App;
