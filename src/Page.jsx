@@ -1,20 +1,22 @@
 
 export const Page = () => {
     
-    const logoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmg6VbQr7k4bE8m1sGjODK19nEZn-UKVChBg&usqp=CAU"
+    const logoUrl = ""
     const sitename = "example.com"
 
-    const getHeadLine = () => {
-        return logoUrl ? (
-            <img src={logoUrl} alt="logo" />
-        ) : (
-            <div>{sitename}</div>
-        )
+    const getClasses = () => {
+        let classes = "p-2 shadow"
+        return (classes += logoUrl ? "me-4" : "")
     }
 
     return (
         <>
-            <header>{getHeadLine()}</header>
+            <header className="d-flex align-items-center w-100">
+                <div className={getClasses()}>
+                    {sitename}
+                </div>
+                {logoUrl && <img src={logoUrl} alt="logo" />}
+            </header>
             <footer>Footer</footer>
         </>
     )
