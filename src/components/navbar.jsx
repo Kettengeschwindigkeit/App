@@ -4,7 +4,11 @@ import NavLink from "./navLink"
 const Navbar = () => {
 
     const [open, setOpen] = useState(false)
-    const [menuItems, setMenuItems] = useState(["Main", "Blog", "Contacts"])
+    const [menuItems, setMenuItems] = useState([
+        { id: 'main', text: 'Main', active: true },
+        { id: 'blog', text: 'Blog', active: false },
+        { id: 'contacts', text: 'Contacts', active: false } 
+    ])
 
     const handleMenuClick = () => {
         setOpen((prevState) => !prevState)
@@ -20,7 +24,7 @@ const Navbar = () => {
             {open && (
             <ul className="list-group">
                 {menuItems.map((item) => (
-                    <NavLink key={item} />
+                    <NavLink key={item.id} text={item.text} active={item.active} />
                 ))}
             </ul>
             )}
