@@ -24,7 +24,7 @@ const Navbar = () => {
             {open && (
             <ul className="list-group">
                 {menuItems.map((item) => (
-                    <NavLink key={item.id} text={item.text} active={item.active} link={item.link} />
+                    <NavLink key={item.id} text={item.text} active={item.active} link={item.link} id={item.id} onActiveChange={handleItemClick} />
                 ))}
             </ul>
             )}
