@@ -5,9 +5,9 @@ const Navbar = () => {
 
     const [open, setOpen] = useState(false)
     const [menuItems, setMenuItems] = useState([
-        { id: 'main', text: 'Main', active: true },
-        { id: 'blog', text: 'Blog', active: false },
-        { id: 'contacts', text: 'Contacts', active: false } 
+        { id: 'main', text: 'Main', active: true, link: '#main' },
+        { id: 'blog', text: 'Blog', active: false, link: '#blog' },
+        { id: 'contacts', text: 'Contacts', active: false, link: '#contacts' } 
     ])
 
     const handleMenuClick = () => {
@@ -24,7 +24,7 @@ const Navbar = () => {
             {open && (
             <ul className="list-group">
                 {menuItems.map((item) => (
-                    <NavLink key={item.id} text={item.text} active={item.active} />
+                    <NavLink key={item.id} text={item.text} active={item.active} link={item.link} />
                 ))}
             </ul>
             )}

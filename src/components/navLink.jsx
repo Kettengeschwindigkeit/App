@@ -15,7 +15,7 @@ const NavLink = (props) => {
     }
 
     return <li className={getClasses()} onClick={handleClick}>
-        {props.text}
+        <a href={props.link}>{props.text}</a>
     </li>
 }
 
