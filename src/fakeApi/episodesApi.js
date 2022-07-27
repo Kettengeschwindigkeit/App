@@ -136,11 +136,12 @@ export const episodes = [
 ];
 
 // Получение эпизодов
-export const fetchAll = () =>
+export const fetchAll = (year) =>
     new Promise((resolve) => {
+        const filterEpisodes = episodes.filter(({ airDate }) => year ? airDate.slice(-4) === year : true);
         setTimeout(() => {
-            resolve(episodes);
-        }, 2000);
+            resolve(filterEpisodes);
+        }, 500);
     });
 
 // Получение списка годов

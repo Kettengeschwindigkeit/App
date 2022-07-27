@@ -3,12 +3,16 @@ import PropTypes from "prop-types";
 
 const GroupList = ({ items, filter, valueProperty, contentProperty, onChangeFilter }) => {
     return (
-        <ul className="list-group">
+        <div className="list-group">
             {items.map((item) => (
-                <li className={"list-group-item list-group-item-action" + (item[valueProperty] === filter ? " active" : "")}
-                    key={item[valueProperty]}>{item[contentProperty]}</li>
+                <button className={"list-group-item list-group-item-action" + (item[valueProperty] === filter ? " active" : "")}
+                    key={item[valueProperty]}
+                    onClick={() => onChangeFilter(item[valueProperty])}
+                >
+                    {item[contentProperty]}
+                </button>
             ))}
-        </ul>
+        </div>
     );
 };
 
