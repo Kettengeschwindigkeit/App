@@ -11,7 +11,7 @@ const EpisodesList = () => {
     const [years, setYears] = useState([]);
     const [filter, setFilter] = useState();
     const count = episodes.length;
-    const pageSize = 8;
+    const pageSize = 6;
 
     const getEpisodes = (year) => {
         fetchAll(year).then((response) => setEpisodes(response));
