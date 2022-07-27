@@ -3,6 +3,7 @@ import { episodes } from "../fakeStorage/episodes";
 import { paginate } from "../utils/paginate";
 import Episode from "./episode";
 import Pagination from "./pagination";
+import GroupList from "./groupList";
 
 const EpisodesList = () => {
     const count = episodes.length;
@@ -16,19 +17,26 @@ const EpisodesList = () => {
     const pageEpisodes = paginate(episodes, currentPage, pageSize);
 
     return (
-        <div className="container">
+        <div className="container pt-2">
             <div className="row">
-                {pageEpisodes.map((episode) => (
-                    <Episode key={episode.id} {...episode} />
-                ))}
-            </div>
-            <div className="row">
-                <Pagination
-                    itemsCount={count}
-                    pageSize={pageSize}
-                    currentPage={currentPage}
-                    onPageChange={handlePageChange}
-                />
+                <div className="col-4">
+                    <GroupList />
+                </div>
+                <div className="col-8">
+                    <div className="row">
+                        {pageEpisodes.map((episode) => (
+                            <Episode key={episode.id} {...episode} />
+                        ))}
+                    </div>
+                    <div className="row">
+                        <Pagination
+                            itemsCount={count}
+                            pageSize={pageSize}
+                            currentPage={currentPage}
+                            onPageChange={handlePageChange}
+                        />
+                    </div>
+                </div>
             </div>
         </div>
     );
