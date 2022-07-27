@@ -1,14 +1,34 @@
-import React, { useState } from "react";
-import { episodes } from "../fakeStorage/episodes";
+import React, { useEffect, useState } from "react";
 import { paginate } from "../utils/paginate";
 import Episode from "./episode";
 import Pagination from "./pagination";
 import GroupList from "./groupList";
+import { fetchAll, fetchYears } from "../fakeApi/episodesApi";
 
 const EpisodesList = () => {
+    const [currentPage, setCurrentPage] = useState(1);
+    const [episodes, setEpisodes] = useState([]);
+    const [years, setYears] = useState([]);
+    const [filter, setFilter] = useState();
     const count = episodes.length;
     const pageSize = 8;
-    const [currentPage, setCurrentPage] = useState(1);
+
+    const getEpisodes = (year) => {
+        fetchAll(year).then((response) => setEpisodes(response));
+        setCurrentPage(1);
+    };
+
+    useEffect(() => {
+        getEpisodes(filter);
+    }, [filter]);
+
+    useEffect(() => {
+        fetchYears().then((response) => setYears(response));
+    }, []);
+
+    const handleFilterChange = (filter) => {
+        setFilter(filter);
+    };
 
     const handlePageChange = (pageIndex) => {
         setCurrentPage(pageIndex);
@@ -20,7 +40,7 @@ const EpisodesList = () => {
         <div className="container pt-2">
             <div className="row">
                 <div className="col-4">
-                    <GroupList />
+                    <GroupList items={years} filter={filter} onChangeFilter={handleFilterChange} />
                 </div>
                 <div className="col-8">
                     <div className="row">
