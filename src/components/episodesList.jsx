@@ -6,12 +6,19 @@ import GroupList from "./groupList";
 import { fetchAll, fetchYears } from "../fakeApi/episodesApi";
 
 const EpisodesList = () => {
-    const [currentPage, setCurrentPage] = useState(1);
     const [episodes, setEpisodes] = useState([]);
     const [years, setYears] = useState([]);
     const [filter, setFilter] = useState();
     const count = episodes.length;
     const pageSize = 6;
+
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const handlePageChange = (pageIndex) => {
+        setCurrentPage(pageIndex);
+    };
+
+    const pageEpisodes = paginate(episodes, currentPage, pageSize);
 
     const getEpisodes = (year) => {
         fetchAll(year).then((response) => setEpisodes(response));
@@ -30,17 +37,24 @@ const EpisodesList = () => {
         setFilter(filter);
     };
 
-    const handlePageChange = (pageIndex) => {
-        setCurrentPage(pageIndex);
+    const handleReset = () => {
+        setFilter();
     };
-
-    const pageEpisodes = paginate(episodes, currentPage, pageSize);
 
     return (
         <div className="container pt-2">
             <div className="row">
                 <div className="col-4">
-                    <GroupList items={years} filter={filter} onChangeFilter={handleFilterChange} />
+                    {
+                        !!years.length && (
+                            <>
+                                <GroupList items={years} filter={filter} onChangeFilter={handleFilterChange} />
+                                <hr />
+                                <div className="d-grid">
+                                    <button onClick={handleReset} className="btn btn-m btn-promary">Clear</button>
+                                </div>
+                            </>
+                        )}
                 </div>
                 <div className="col-8">
                     <div className="row">
