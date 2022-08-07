@@ -51,7 +51,7 @@ const EpisodesList = () => {
                                 <GroupList items={years} filter={filter} onChangeFilter={handleFilterChange} />
                                 <hr />
                                 <div className="d-grid">
-                                    <button onClick={handleReset} className="btn btn-m btn-promary">Clear</button>
+                                    <button onClick={handleReset} className="btn btn-m btn-primary">Clear</button>
                                 </div>
                             </>
                         )}
